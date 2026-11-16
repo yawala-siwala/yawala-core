@@ -15,8 +15,8 @@ class NoteDeleted {
 void main() {
   test('delivers published events to typed subscribers', () async {
     final bus = YawalaEventBus();
-    final saved = <String>[];
-    final deleted = <String>[];
+    final saved = <NoteSaved>[];
+    final deleted = <NoteDeleted>[];
 
     final subA = bus.on<NoteSaved>().listen(saved.add);
     final subB = bus.on<NoteDeleted>().listen(deleted.add);
@@ -26,8 +26,8 @@ void main() {
     bus.publish('untyped noise');
     await pumpEventQueue();
 
-    expect(saved, ['n1']);
-    expect(deleted, ['n1']);
+    expect(saved.map((e) => e.id), ['n1']);
+    expect(deleted.map((e) => e.id), ['n1']);
 
     await subA.cancel();
     await subB.cancel();

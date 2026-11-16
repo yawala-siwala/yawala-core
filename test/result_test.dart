@@ -5,7 +5,7 @@ import 'package:yawala_core/yawala_core.dart';
 void main() {
   group('Result.ok', () {
     test('exposes the success value', () {
-      final Result<int> result = Result.ok(42);
+      final Result<int> result = const Result.ok(42);
 
       expect(result.isOk, isTrue);
       expect(result.isErr, isFalse);
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('folds to the ok branch', () {
-      final Result<int> result = Result.ok(2);
+      final Result<int> result = const Result.ok(2);
 
       expect(
         result.fold(ok: (v) => v * 10, err: (_, __) => -1),

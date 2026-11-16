@@ -65,17 +65,21 @@ void main() {
 
   group('design tokens', () {
     test('spacing scale is strictly increasing', () {
-      expect(
-        [
-          YawalaSpacing.xs,
-          YawalaSpacing.sm,
-          YawalaSpacing.md,
-          YawalaSpacing.lg,
-          YawalaSpacing.xl,
-          YawalaSpacing.xxl,
-        ],
-        pairwiseCompare<num, String>((a, b, _) => a < b, 'strictly increasing'),
-      );
+      final scale = <double>[
+        YawalaSpacing.xs,
+        YawalaSpacing.sm,
+        YawalaSpacing.md,
+        YawalaSpacing.lg,
+        YawalaSpacing.xl,
+        YawalaSpacing.xxl,
+      ];
+      for (var i = 0; i < scale.length - 1; i++) {
+        expect(
+          scale[i] < scale[i + 1],
+          isTrue,
+          reason: 'spacing must strictly increase at step $i',
+        );
+      }
     });
 
     test('radii and durations expose documented values', () {

@@ -18,7 +18,8 @@ class YawalaEventBus {
   void publish(Object event) => _controller.add(event);
 
   /// Broadcast stream of all events of type [T].
-  Stream<T> on<T>() => _controller.stream.whereType<T>();
+  Stream<T> on<T>() =>
+      _controller.stream.where((event) => event is T).cast<T>();
 
   /// Closes the bus; pending deliveries finish first.
   Future<void> dispose() => _controller.close();
