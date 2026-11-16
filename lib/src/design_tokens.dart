@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 /// Numeric design tokens shared by every Yawala-Siwala app.
 ///
