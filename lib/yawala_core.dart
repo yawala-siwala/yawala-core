@@ -10,11 +10,13 @@
 /// - **Helpers** - duration/byte/date formatters, string utils, bundle ids
 library yawala_core;
 
+export 'src/channel_gateway.dart';
 export 'src/dates.dart';
 export 'src/design_tokens.dart';
 export 'src/event_bus.dart';
 export 'src/ids.dart';
 export 'src/logging.dart';
+export 'src/platform_info.dart';
 export 'src/result.dart';
 export 'src/storage.dart';
 export 'src/strings.dart';
